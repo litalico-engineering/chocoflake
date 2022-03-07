@@ -53,8 +53,6 @@ class IdWorkerOnRandomSequenceTest extends PHPUnit_Framework_TestCase
     {
         $config = new IdConfig(41, 5, 5, 4, 1414334507356);
         $this->idWorker = new IdWorkerOnRandomSequence($config, new RegionId(1), new ServerId(1));
-        // Clear all data in shared memory.
-        $this->idWorker->clear();
         /** @var int $ids */
         $ids = array();
         $expectedCount = 1000;
@@ -84,8 +82,6 @@ class IdWorkerOnRandomSequenceTest extends PHPUnit_Framework_TestCase
     {
         $config = new IdConfig(41, 5, 5, 4, 1414334507356);
         $this->idWorker = new IdWorkerOnRandomSequence($config, new RegionId(1), new ServerId(1));
-        // Clear all data in shared memory.
-        $this->idWorker->clear();
 
         $pids = array();
         $loopCount = 100;
