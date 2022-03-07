@@ -52,6 +52,6 @@ class IdWorkerOnRandomSequence extends AbstractIdWorker implements IdWorkerInter
      */
     public function generateSequence()
     {
-        return mt_rand(0, $this->config->getSequenceMask());
+        return mt_rand(0, $this->config->getMaxSequence());
     }
 }
