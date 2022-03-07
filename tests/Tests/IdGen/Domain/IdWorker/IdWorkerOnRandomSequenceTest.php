@@ -53,7 +53,7 @@ class IdWorkerOnRandomSequenceTest extends PHPUnit_Framework_TestCase
      */
     public function createIdValueWithoutDuplication()
     {
-        $config = new IdConfig(41, 5, 5, 4, 1414334507356);
+        $config = new IdConfig(41, 5, 5, 8, 1414334507356);
         $this->idWorker = new IdWorkerOnRandomSequence($config, new RegionId(1), new ServerId(1));
         /** @var int $ids */
         $ids = array();
@@ -82,7 +82,7 @@ class IdWorkerOnRandomSequenceTest extends PHPUnit_Framework_TestCase
      */
     public function createIdValueWithoutDuplicationUnderProcessForks()
     {
-        $config = new IdConfig(41, 5, 5, 4, 1414334507356);
+        $config = new IdConfig(41, 5, 5, 8, 1414334507356);
         $this->idWorker = new IdWorkerOnRandomSequence($config, new RegionId(1), new ServerId(1));
 
         $pids = array();
