@@ -20,7 +20,7 @@ class IdWorkerOnRandomSequenceTest extends PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $config = new IdConfig(41, 5, 5, 12, 1414334507356);
-        $this->idWorker = Mockery::mock('\Adachi\Choco\Domain\IdWorker\RandomSequence\IdWorkerOnRandomSequence[generateTimestamp]', [$config, new RegionId(1), new ServerId(1)]);
+        $this->idWorker = Mockery::mock('\Adachi\Choco\Domain\IdWorker\RandomSequence\IdWorkerOnRandomSequence[generateTimestamp,generateSequence]', [$config, new RegionId(1), new ServerId(1)]);
         $this->idWorker->shouldReceive('generateTimestamp')
             ->andReturn(new Timestamp(1000));
         $this->idWorker->shouldReceive('generateSequence')
