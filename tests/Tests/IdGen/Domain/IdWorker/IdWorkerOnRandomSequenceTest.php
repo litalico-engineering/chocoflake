@@ -24,7 +24,7 @@ class IdWorkerOnRandomSequenceTest extends PHPUnit_Framework_TestCase
         $this->idWorker->shouldReceive('generateTimestamp')
             ->andReturn(new Timestamp(1000));
         $this->idWorker->shouldReceive('generateSequence')
-            ->andReturn(new Timestamp(1));
+            ->andReturn(1);
     }
 
     /**
