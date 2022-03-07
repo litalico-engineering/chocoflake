@@ -17,13 +17,6 @@ use Adachi\Choco\Domain\IdWorker\IdWorkerInterface;
 class IdWorkerOnRandomSequence extends AbstractIdWorker implements IdWorkerInterface
 {
     /**
-     * The sequence.
-     *
-     * @var int
-     */
-    protected $sequence = 0;
-
-    /**
      * @param IdConfig $config
      * @param RegionId $regionId
      * @param ServerId $serverId
@@ -46,12 +39,19 @@ class IdWorkerOnRandomSequence extends AbstractIdWorker implements IdWorkerInter
             usleep(1);
             $timestamp = $this->generateTimestamp();
         }
-        // Incrementing sequence
-        $this->sequence = ($this->sequence + 1) & $this->config->getSequenceMask();
+        $sequence = $this->generateSequence();
 
         // Update lastTimestamp
         $this->lastTimestamp = $timestamp;
 
-        return new IdValue($timestamp, $this->regionId, $this->serverId, $this->sequence, $this->calculate($timestamp, $this->regionId, $this->serverId, $this->sequence));
+        return new IdValue($timestamp, $this->regionId, $this->serverId, $sequence, $this->calculate($timestamp, $this->regionId, $this->serverId, $sequence));
+    }
+
+    /**
+     * @return int
+     */
+    public function generateSequence()
+    {
+        return mt_rand(0, $this->config->getSequenceMask());
     }
 }
