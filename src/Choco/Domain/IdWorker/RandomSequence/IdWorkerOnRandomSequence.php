@@ -47,7 +47,7 @@ class IdWorkerOnRandomSequence extends AbstractIdWorker implements IdWorkerInter
             $timestamp = $this->generateTimestamp();
         }
         // Incrementing sequence
-        $this->sequence = $this->sequence++ & $this->config->getSequenceMask();
+        $this->sequence = ($this->sequence + 1) & $this->config->getSequenceMask();
 
         // Update lastTimestamp
         $this->lastTimestamp = $timestamp;
